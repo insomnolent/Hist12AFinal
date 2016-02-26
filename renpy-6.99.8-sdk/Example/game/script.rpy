@@ -17,17 +17,17 @@ label start:
  scene bg black
 # will pause test before starting to type it
  pause(.5)
- n "What is going on?"
- n "Where am I?"
+ n "{i}What is going on?{/i}"
+ n "{i}Where am I?{/i}"
 
  scene bg colonialbackground
  with fade
 
  n "You look around at your surroundings."
- n "It looks like one of the landscapes from the colonial paintings you saw in your History 12A class"
- n "But why would you be here, of all places?"
- n "You hear some noises behind you."
- n "You turn around to see what it is."
+ n "{i}Wow, this looks like one of the paintings I saw in my History 12A class. Am I dreaming?{/i}"
+ n "{i}But why would I be here, of all places?{/i}"
+ n "You hear some noises near the lake in front of you."
+ n "You move forward to investigate."
 
  show chief normal at left
  with dissolve
@@ -47,29 +47,43 @@ label ignore:
  show chief normal at left
 
  n "He doesn't seem to hear you."
- n "It seems like he's speaking to someone else."
- n "You look towards your right."
+ n "He's speaking to someone else."
+ n "You look to your right."
 
  show settler normal at right
  with dissolve
 
- n "The settler smiled."
+ n "The settler speaks."
 
- show settler smile at right
-
- s "Well for the exact same reason as you!"
- s "We both want what's best for our people, after all."
- s "Now, let's start going over the terms of this treaty..."
+ s "I am here to make a deal with you."
+ s "I want your land, and I promise to give you some terrority as well for your people to live peacefully."
+ s "I have written a treaty for you to review. Please look over the terms of this treaty and let me know if you agree."
 
  show settler normal at right
 
- n "They begin talking with words and numbers that you can't understand."
- n "What treaty are they talking about?"
- n "You keep trying to hear words you can recognize."
+ n "They begin talking about the terms, but you can’t hear them. You only pick up a few words."
+ n "{i}What are they talking about? Ugh, I can't hear anything.{/i}"
+ n "You keep trying to pick out words from their conversation."
  show chief talk at left
- c "-the last time you claimed to \"govern\" and \"protect\" Native Americans, it resulted in even more chaos!"
- c "I'm not sure if this will be-"
-
- n "From the way he's talking about it, this sounds like the 1850 Act for the Governance and Protection of Indians!"
+ c "You write that you will leave my family in peace, but how can I trust you? The 1850 Act for the Protection and Governance of Indians was established to benefit us, but it only benefitted your people."
+ c "You have invaded our land, destroyed our people and eliminated all chances of survival. So tell me, how can I believe that this treaty will stand?"
+ s "You are right. The 1850 Act has failed you. However, you have my word that I will stand by this treaty and leave you and your family in peace. I only want your land and nothing more."
  
+ n "You try to interject:"
+menu: 
+ "Don't trust him!":
+     jump ignoreagain
+ "Are you sure that's the best solution?":
+     jump ignoreagain
+ "What if he's lying?":
+     jump ignoreagain
 
+label ignoreagain:
+ n "He still doesn’t seem to hear you."
+ c "I'm not sure if this will be the best idea..."
+ s "But what other choice do you have? If you don’t sign this treaty, then you risk having your land taken by force!"
+ n "The chief is in a dilemma. He has to choose between his land, or the peace of his people."
+ c "I still have my doubts, but I will sign this treaty with you." 
+ s "You have made a smart decision."
+ show settler smile at right
+ n "He smiles again."

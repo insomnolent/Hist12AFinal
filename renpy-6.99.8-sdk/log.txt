@@ -1,17 +1,17 @@
-Tue Feb 23 02:31:37 2016
+Fri Feb 26 04:04:37 2016
 Windows-8-6.2.9200
 Ren'Py 6.99.8.959
  
 
-Bootstrap to the start of init.init took 0.10s
-Early init took 0.04s
+Bootstrap to the start of init.init took 0.14s
+Early init took 0.02s
 Loader init took 0.08s
-Loading error handling took 0.03s
-Loading script took 0.89s
+Loading error handling took 0.02s
+Loading script took 0.61s
 Loading persistent took 0.01s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.27s
-Loading analysis data took 0.04s
+Running init code took 0.38s
+Loading analysis data took 0.07s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Dump and make backups. took 0.00s
@@ -22,18 +22,18 @@ Creating interface object took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s
-Load screen analysis took 0.02s
+Load screen analysis took 0.04s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.07s
+Prepare screens took 0.09s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.01s
+Interface start took 0.00s
 Couldn't import angle renderer:
 Traceback (most recent call last):
-  File "C:\Users\csun24\Documents\UCLA\'16 Winter\hist12A_final_project\renpy-6.99.8-sdk\renpy\display\core.py", line 1702, in make_draw
+  File "C:\Users\csun24\Documents\GitHub\Hist12AFinal\renpy-6.99.8-sdk\renpy\display\core.py", line 1702, in make_draw
     __import__(mod)
 ImportError: DLL load failed: The specified module could not be found.
 Unknown renderer: angle
@@ -224,11 +224,11 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Total time until interface ready: 2.59200000763s
+Total time until interface ready: 2.17599987984s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.022000 seconds.
-- Frame drawn at 0.037000 seconds.
-- Frame drawn at 0.053000 seconds.
-- Frame drawn at 0.071000 seconds.
-- 0.071000 seconds to render 5 frames.
+- Frame drawn at 0.025000 seconds.
+- Frame drawn at 0.040000 seconds.
+- Frame drawn at 0.057000 seconds.
+- Frame drawn at 0.075000 seconds.
+- 0.075000 seconds to render 5 frames.

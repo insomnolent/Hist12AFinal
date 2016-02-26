@@ -1,32 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 60, in script
-    $ style.file_picker_entry.xpos = 0
-  File "game/script.rpy", line 60, in <module>
-    $ style.file_picker_entry.xpos = 0
-Exception: Style 'file_picker_entry' does not exist.
+  File "game/script.rpy", line 89, in script
+    S "You have made a smart decision."
+Exception: Sayer 'S' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\csun24\Downloads\renpy-6.99.8-sdk\renpy\bootstrap.py", line 281, in bootstrap
-    renpy.main.main()
-  File "C:\Users\csun24\Downloads\renpy-6.99.8-sdk\renpy\main.py", line 401, in main
-    game.context().run(node)
-  File "game/script.rpy", line 60, in script
-    $ style.file_picker_entry.xpos = 0
-  File "C:\Users\csun24\Downloads\renpy-6.99.8-sdk\renpy\ast.py", line 805, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\csun24\Downloads\renpy-6.99.8-sdk\renpy\python.py", line 1461, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/script.rpy", line 60, in <module>
-    $ style.file_picker_entry.xpos = 0
-  File "renpy/style.pyx", line 206, in renpy.style.StyleManager.__getattr__ (gen\renpy.style.c:3234)
-    return get_style(name)
-  File "renpy/style.pyx", line 88, in renpy.style.get_style (gen\renpy.style.c:1659)
-    raise Exception("Style %r does not exist." % name)
-Exception: Style 'file_picker_entry' does not exist.
+  File "game/script.rpy", line 89, in script
+    S "You have made a smart decision."
+  File "C:\Users\csun24\Documents\GitHub\Hist12AFinal\renpy-6.99.8-sdk\renpy\ast.py", line 583, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\csun24\Documents\GitHub\Hist12AFinal\renpy-6.99.8-sdk\renpy\ast.py", line 500, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
+Exception: Sayer 'S' is not defined.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.8.959
