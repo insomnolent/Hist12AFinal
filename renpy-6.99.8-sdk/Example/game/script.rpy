@@ -25,7 +25,7 @@ label start:
 
  n "You look around at your surroundings."
  n "{i}Wow, this looks like one of the paintings I saw in my History 12A class. Am I dreaming?{/i}"
- n "{i}But why would I be here, of all places?{/i}"
+ n "But why would you be here, of all places?"
  n "You hear some noises near the lake in front of you."
  n "You move forward to investigate."
 
@@ -53,16 +53,18 @@ label ignore:
  show settler normal at right
  with dissolve
 
- n "The settler speaks."
+ n "The settler smiles."
 
- s "I am here to make a deal with you."
- s "I want your land, and I promise to give you some terrority as well for your people to live peacefully."
- s "I have written a treaty for you to review. Please look over the terms of this treaty and let me know if you agree."
+ show settler smile at right
+
+ s "I am here to make a deal with you!"
+ s "I want your land and I promise to give you an area of land for you and your family to live peacefully."
+ s "Here is a treaty for you to review. Please look over the terms of this treaty and let me know if you are unsatisfied."
 
  show settler normal at right
 
  n "They begin talking about the terms, but you can’t hear them. You only pick up a few words."
- n "{i}What are they talking about? Ugh, I can't hear anything.{/i}"
+ n "{i}What are they talking about? I can't hear anything...{/i}"
  n "You keep trying to pick out words from their conversation."
  show chief talk at left
  c "You write that you will leave my family in peace, but how can I trust you? The 1850 Act for the Protection and Governance of Indians was established to benefit us, but it only benefitted your people."
@@ -85,5 +87,6 @@ label ignoreagain:
  n "The chief is in a dilemma. He has to choose between his land, or the peace of his people."
  c "I still have my doubts, but I will sign this treaty with you." 
  s "You have made a smart decision."
- show settler smile at right
- n "He smiles again."
+show settler smile at right
+
+n "He smiles again."

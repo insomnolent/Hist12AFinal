@@ -2,7 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 70: is not terminated with a newline. (Check strings and parenthesis.)
-     c "-the last time you claimed to \"govern"\ and \"protect"\ Native Americans, it resulted in even more chaos!"
+File "game/script.rpy", line 91: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation.
+    n "He smiles again."
+    ^
 
 Ren'Py Version: Ren'Py 6.99.8.959
