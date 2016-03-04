@@ -1,5 +1,6 @@
 ﻿# declared images
 image bg black = "black.png"
+image bg white = "white.png"
 image bg colonialbackground = "NA_landscape.jpg"
 
 image chief normal = "NA_chief.png"
@@ -8,6 +9,7 @@ image settler normal = "colonizer.png"
 image settler smile = "colonizer_smile.png"
 
 define n = Character(None,what_slow_cps = 30,show_two_window = True, color="#c8c8ff")
+define y = Character('You',what_slow_cps = 30,show_two_window = True)
 define c = Character('Native American Chief',what_slow_cps = 30,show_two_window = True)
 define s = Character('Colonial Settler',what_slow_cps = 30,show_two_window = True)
 
@@ -22,10 +24,12 @@ label start:
 
  scene bg colonialbackground
  with fade
+ 
+ play music "naturesounds.mp3"
 
  n "You look around at your surroundings."
- n "{i}Wow, this looks like one of the paintings I saw in my History 12A class. Am I dreaming?{/i}"
- n "But why would you be here, of all places?"
+ y "{i}Wow, this looks like one of the paintings I saw in my History 12A class. Am I dreaming?{/i}"
+ y "{i}But why would I be here, of all places?{/i}"
  n "You hear some noises near the lake in front of you."
  n "You move forward to investigate."
 
@@ -90,3 +94,13 @@ label ignoreagain:
 show settler smile at right
 
 n "He smiles again."
+y "{i}How disturbing...{/i}"
+y "{i}I feel bad for that Native American Chief...I wonder if he'll be okay..."
+n "But before you can dwell on this further, the scene shifts."
+
+scene bg black
+with Dissolve(.1)
+scene bg white
+with Dissolve(.1)
+scene bg black
+with Dissolve(.1)
