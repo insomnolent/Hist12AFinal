@@ -2,7 +2,8 @@
 image bg black = "black.png"
 image bg white = "white.png"
 image bg colonialbackground = "NA_landscape.jpg"
-image bg office = im.Scale("lawyeroffice.jpg",900,1200)
+image bg detentioncenter = im.Scale("immigrant.jpg",1000,1200)
+# image bg office = im.Scale("lawyeroffice.jpg",900,1200)
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -145,7 +146,7 @@ label CI:
 y "{i}Now what's going on...?{/i}"
 play music "apollo_justice.mp3" fadein 2.0
 
-scene bg office
+scene bg detentioncenter 
 with fade
 
 n "It looks like you are now in a detention facility."
@@ -228,7 +229,7 @@ show chinese talk at left
 with dissolve
 i "There were hundreds of Chinese people like me working on the tracks."
 i "We did as we were told and never saw or talked to our employer unless one of us had made a mistake or if we needed to work faster."
-i "If I never interacted with my employer, the how could he be my witness?"
+i "If I never interacted with my employer, then how could he be my witness?"
 show chinese normal at left
 with dissolve    
 n "The lawyer scribbles some notes down on his paper. He sighs."
