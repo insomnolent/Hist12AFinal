@@ -3,7 +3,9 @@ image bg black = "black.png"
 image bg white = "white.png"
 image bg colonialbackground = "NA_landscape.jpg"
 image bg detentioncenter = im.Scale("immigrant.jpg",1000,1200)
-image bg buildings = im.Scale("watts_riot_background.jpg",1000,1200)
+image bg buildings = im.Scale("Watts_Riot_1.jpg",900,1100)
+image bg crowd = im.Scale("Watts_Riot_2.jpg",900,800)
+image bg speaker = im.Scale("Watts_Riot_3.jpg",800,600)
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -11,13 +13,15 @@ image chief talk = "NA_chief_talk.png"
 image settler normal = "Settler.png"
 image settler smile = "Settler_smile.png"
 image settler talk = "Settler_talk.png"
-#Chinese Immigrant chapter
+# Chinese Immigrant chapter
 image chinese normal = "Chinese.png"
 image chinese dejected = "Chinese_dejected.png"
 image chinese talk = "Chinese_talk.png"
 image lawyer normal = "Lawyer.png"
 image lawyer talk = "Lawyer_talk.png"
 image lawyer look = "Lawyer_lookdown.png"
+# Watt's Rebellion
+image man normal = "black_man.jpg"
 
 define n = Character(None,what_slow_cps = 40,show_two_window = True, color="#c8c8ff")
 define y = Character('You',what_slow_cps = 40,show_two_window = True)
@@ -27,6 +31,8 @@ define s = Character('Colonial Settler',what_slow_cps = 40,show_two_window = Tru
 # Chinese Immigrant chapter
 define l = Character('Lawyer',what_slow_cps = 40,show_two_window = True)
 define i = Character('Chinese Immigrant',what_slow_cps = 40,show_two_window = True)
+# Watt's Rebellion
+define a = Character('Protestor',what_slow_cps = 40)
 
 # where program starts running
 # scene (name of image) will put that image on the background
@@ -291,3 +297,59 @@ with fade
 
 n "The surroundings suddenly changed again."
 y "{i}It seems like I’m in early 20th century Los Angeles.{/i}"
+n "You see buildings burning. There are fire fighters putting out the flames and trash is all over the street."
+y "Hearing a lot of shouts from down the street, you decide to approach where the sounds are coming from."
+
+scene bg black
+with fade
+scene bg crowd
+with fade
+
+y "{i}Oh my gosh, what’s going on? This is complete chaos!{/i}"
+n "You end up joining a crowd of people on the side. Someone is speaking amongst the chaos."
+n "You are so preoccupied that you accidentally bump into a tall African American."
+
+show man normal
+
+n "He seems startled to see you there."
+
+$ count = 1
+jump loop
+
+label loop:
+if count > 0:
+    a "What are you doing here? This is no place for a kid like you!"
+    menu:
+        "What's going on?":
+            jump explain
+        "Who are you?":
+            jump introduce
+        "Who are you calling a kid?!":
+            jump angry
+   
+    label explain:
+        a "We're finally protesting against our unfair treatment! Are you gonna join us?"
+        # jump progress
+        jump loop        
+    label introduce:
+        a "That's not important. Who are you?"
+        # jump progress
+        jump loop
+    label angry:
+        a "Obviously you! Do you wanna get arrested with the rest of us that badly?"
+        # jump progress
+        $ count = 0
+        jump loop
+else:
+    jump progress
+
+label progress:
+ 
+y "{i}Wait he can hear me now???{/i}" 
+n "Before you can reply, the crowd shouts in unison again."
+    
+   
+scene bg black
+with fade
+scene bg speaker
+with fade
