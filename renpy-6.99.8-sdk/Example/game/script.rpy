@@ -3,7 +3,7 @@ image bg black = "black.png"
 image bg white = "white.png"
 image bg colonialbackground = "NA_landscape.jpg"
 image bg detentioncenter = im.Scale("immigrant.jpg",1000,1200)
-# image bg office = im.Scale("lawyeroffice.jpg",900,1200)
+image bg buildings = im.Scale("watts_riot_background.jpg",1000,1200)
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -41,6 +41,8 @@ menu:
         jump NA
     "Chinese Immigrants":
         jump CI
+    "Watt's Rebellion":
+        jump WR
 
 # begin Native American chapter
 
@@ -268,7 +270,7 @@ stop sound
 stop music
 
 scene bg black
-with Dissolve(.5)
+with fade
 scene bg white
 with Dissolve(.5)
 scene bg black
@@ -278,3 +280,14 @@ with Dissolve(.5)
 scene bg black
 with Dissolve(.5)
 
+
+jump WR
+
+# third chapter Watt's Rebellion
+label WR:
+
+scene bg buildings
+with fade
+
+n "The surroundings suddenly changed again."
+y "{i}It seems like I’m in early 20th century Los Angeles.{/i}"
