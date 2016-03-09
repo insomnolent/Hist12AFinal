@@ -143,12 +143,13 @@ jump CI
 # begin Chinese immigrants chapter
 label CI:
 y "{i}Now what's going on...?{/i}"
-play music "office.mp3"
+play music "apollo_justice.mp3" fadein 2.0
 
 scene bg office
 with fade
 
-n "It looks like you are now in an office-like setting."
+n "It looks like you are now in a detention facility."
+n "A sign on the door says that it is an Immigration Detention center."
 n "You look around and see someone sitting on a chair in the corner."
 y "{i}This has to be a dream...but it seems so realistic!{/i}"
 
@@ -182,7 +183,7 @@ show lawyer talk at right
 with dissolve
 l "Hello, my name is William Hill and I am your attorney."
 l "I was hired for you by the Chinese Six Companies. I will do my best to help you."
-l "Let’s begin by you telling me your story."
+l "Let’s begin with you telling me your story."
 show lawyer normal at right
 with dissolve
 show chinese talk at left
@@ -226,7 +227,7 @@ with dissolve
 show chinese talk at left
 with dissolve
 i "There were hundreds of Chinese people like me working on the tracks."
-i "We did as we were told and never saw or talk to our employer unless if one of us had made a mistake or if we needed to work faster."
+i "We did as we were told and never saw or talked to our employer unless one of us had made a mistake or if we needed to work faster."
 i "If I never interacted with my employer, the how could he be my witness?"
 show chinese normal at left
 with dissolve    
@@ -236,7 +237,7 @@ with dissolve
 l "I am sorry, but I can do nothing for you at this moment."
 l "As established by the case of Fong Yue Ting v. U.S., deportation is not a punishment for a crime."
 l "You are not unlawfully residing in America, but your inability to obtain a certificate is merely an administrative mistake."
-l "They are fixing that mistake by sending you home. This is what the Supreme Court has said and that is the precedent."
+l "They are fixing that mistake by sending you home. This is what the Supreme Court has said and this is the precedent."
 show lawyer normal at right
 with dissolve
 n "Angered, you try to interject."
