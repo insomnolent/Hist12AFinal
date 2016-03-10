@@ -21,7 +21,7 @@ image lawyer normal = "Lawyer.png"
 image lawyer talk = "Lawyer_talk.png"
 image lawyer look = "Lawyer_lookdown.png"
 # Watt's Rebellion
-image man normal = "black_man.jpg"
+image man normal = "Blackman.png"
 
 define n = Character(None,what_slow_cps = 40,show_two_window = True, color="#c8c8ff")
 define y = Character('You',what_slow_cps = 40,show_two_window = True)
@@ -32,7 +32,7 @@ define s = Character('Colonial Settler',what_slow_cps = 40,show_two_window = Tru
 define l = Character('Lawyer',what_slow_cps = 40,show_two_window = True)
 define i = Character('Chinese Immigrant',what_slow_cps = 40,show_two_window = True)
 # Watt's Rebellion
-define a = Character('Protestor',what_slow_cps = 40)
+define a = Character('Protestor',what_slow_cps = 40,show_two_window = True)
 
 # where program starts running
 # scene (name of image) will put that image on the background
@@ -309,46 +309,67 @@ y "{i}Oh my gosh, what’s going on? This is complete chaos!{/i}"
 n "You end up joining a crowd of people on the side. Someone is speaking amongst the chaos."
 n "You are so preoccupied that you accidentally bump into a tall African American."
 
-show man normal
+show man normal at left
 
 n "He seems startled to see you there."
 
-$ count = 1
-jump loop
+# $ count = 1
+# jump loop
 
-label loop:
-if count > 0:
-    a "What are you doing here? This is no place for a kid like you!"
-    menu:
-        "What's going on?":
-            jump explain
-        "Who are you?":
-            jump introduce
-        "Who are you calling a kid?!":
-            jump angry
-   
-    label explain:
-        a "We're finally protesting against our unfair treatment! Are you gonna join us?"
-        # jump progress
-        jump loop        
-    label introduce:
-        a "That's not important. Who are you?"
-        # jump progress
-        jump loop
-    label angry:
-        a "Obviously you! Do you wanna get arrested with the rest of us that badly?"
-        # jump progress
-        $ count = 0
-        jump loop
-else:
+a "What are you doing here? This is no place for a kid like you!"
+
+# label loop:
+# if count > 0:
+menu:
+    "What's going on?":
+        jump explain
+    "Who are you?":
+        jump introduce
+    "Who are you calling a kid?!":
+        jump angry
+
+label explain:
+    a "We're finally protesting against our unfair treatment! Are you gonna join us?"
+    # jump progress
+    jump decide        
+label introduce:
+    a "That's not important. Who are you?"
     jump progress
+    # jump loop
+label angry:
+    a "Obviously you! Do you wanna get arrested with the rest of us that badly?"
+    # jump progress
+    # $ count = 0
+    jump apologize
+# else:
+#    jump progress
+
+label decide:
+    menu:
+        "Definitely!":
+            jump react
+        "Uhh no thanks...":
+            jump advice
+        "I don't know.":
+            jump advice
+
+label advice:
+a "Well then what are you doing here??"
+jump progress
+    
+label react:
+a "Great! As soon as the leader finishes her speech, we will finally begin the real event!"
+jump respond
+
+label apologize:
+n "You quickly apologize before you make him more angry."
+n "He seems satisfied for now."
+a "Well if you don't understand, you should probably shouldn't be here anyway..."
 
 label progress:
- 
-y "{i}Wait he can hear me now???{/i}" 
-n "Before you can reply, the crowd shouts in unison again."
-    
-   
+# y "{i}Wait he can hear me now???{/i}" 
+n "Before you can respond, the crowd shouts again in unison."
+
 scene bg black
 with fade
 scene bg speaker
