@@ -365,6 +365,7 @@ label apologize:
 n "You quickly apologize before you make him more angry."
 n "He seems satisfied for now."
 a "Well if you don't understand, you should probably shouldn't be here anyway..."
+jump progress
 
 label progress:
 # y "{i}Wait he can hear me now???{/i}" 
