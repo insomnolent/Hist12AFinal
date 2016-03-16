@@ -9,6 +9,7 @@ image bg speaker = im.Scale("Blackspeech.png",800,600)
 image bg speaker_lookarm = im.Scale("Blackspeech_lookarm.png",800,600)
 image bg speaker_lookright = im.Scale("Blackspeech_lookright.png",800,600)
 image bg speaker_talk = im.Scale("Blackspeech_talk.png",800,600)
+image bg lecturehall = "ch4/LectureHall.jpg"
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -25,6 +26,11 @@ image lawyer talk = "Lawyer_talk.png"
 image lawyer look = "Lawyer_lookdown.png"
 # Watt's Rebellion
 image man normal = "Blackman.png"
+# Classroom
+image prof normal = "ch4/Professor.png"
+image prof tilt = "ch4/Professor_happy.png"
+image prof tiltopen = "ch4/Professor_happytalk.png"
+image prof normalopen = "ch4/Professor_talk.png"
 
 define n = Character(None,what_slow_cps = 40,show_two_window = True, color="#c8c8ff")
 define y = Character('You',what_slow_cps = 40,show_two_window = True)
@@ -37,6 +43,8 @@ define i = Character('Chinese Immigrant',what_slow_cps = 40,show_two_window = Tr
 # Watt's Rebellion
 define a = Character('Protestor',what_slow_cps = 40,show_two_window = True)
 define b = Character('Speaker',what_slow_cps = 40)
+# Classroom
+define p = Character('Professor',what_slow_cps = 40)
 
 # where program starts running
 # scene (name of image) will put that image on the background
@@ -442,7 +450,54 @@ jump CR
 label CR:
 
 scene bg white with fade
-scene bg black with Dissolve(2.0)
+scene bg black with dissolve
+
 scene bg white with dissolve
 scene bg black with Dissolve(2.0)
+
+scene bg lecturehall with Dissolve(0.5)
+scene bg black with dissolve
+y "{i}Huh?...wait a second...{/i}"
+
+scene bg lecturehall with Dissolve(3.0)
+
+n "You arrive inside a familiar lecture room. It looks like Franz Hall at UCLA."
+n "You realize you were dreaming during lecture!"
+n "Professor Hernandez is in the middle of teaching class."
+
+show prof normal with dissolve
+p "Now, we saw the Native Americans, the Chinese Immigrants, and the Watts Rebellion and how all these moments have led to the current situation of mass incarceration in LA."
+p "The Native American narrative showed us the elimination and disappearance of natives."
+p "The Chinese Immigrants story made it legal to find people within our borders who came to America without proper documentation to deport and detain."
+p "Finally, the police violence that occurred during the Watts Rebellion and now in our time the attack on black livelihood."
+p "It is these three important times in our history that have led to what we know as mass incarceration in LA."
+p "So what do we hope for the future?"
+n "{i}Hmmm should I raise my hand?{/i}"
+
+menu:
+    "Yes, raise hand.":
+        n "You raise your hand."
+        p "You over there! Yes?"
+        jump chosen
+    "No, don't raise hand.":
+        n "You don't raise your hand."
+        n "The professor looks around and sees no one volunteering."
+        n "She ends up calling on you."
+        p "How about you over there?"
+        jump chosen
+
+label chosen:
+n "You stand up."
+n "Remembering the flashbacks and the lessons you learned in History 12A, you start speaking."
+y "I hope for a future where we spend more money on schools than on prisons."
+y "I hope that there will be more educational programs to help released inmates reenter society more easily." 
+y "I hope that criminalization will not be written on to the color of your skin or your economic status."
+y "And I hope that we will always be aware of what we learned in this class and not take our privilege for granted."
+n "You sit down, oddly satisfied."
+n "The professor smiled."
+p "Those are great hopes for the future. I wish for all of you, after taking this class, that you remember this knowledge and share it with your friends and family."
+p "The wrongs that exist in our history can and need to be corrected."
+p "It is unfair for large numbers of poor whites, people of color, and others to be incarcerated because they don't fit into societal norms."
+p "There is no one cause or one solution to this problem, so it is important to analyze it from all perspectives."
+p "Take this knowledge and engage in discussions of the future because the future is in your hands."
     
