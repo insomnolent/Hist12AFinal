@@ -5,7 +5,10 @@ image bg colonialbackground = "NA_landscape.jpg"
 image bg detentioncenter = im.Scale("immigrant.jpg",1000,1200)
 image bg buildings = im.Scale("Watts_Riot_1.jpg",900,1100)
 image bg crowd = im.Scale("Watts_Riot_2.jpg",900,800)
-image bg speaker = im.Scale("Watts_Riot_3.jpg",800,600)
+image bg speaker = im.Scale("Blackspeech.png",800,600)
+image bg speaker_lookarm = im.Scale("Blackspeech_lookarm.png",800,600)
+image bg speaker_lookright = im.Scale("Blackspeech_lookright.png",800,600)
+image bg speaker_talk = im.Scale("Blackspeech_talk.png",800,600)
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -33,6 +36,7 @@ define l = Character('Lawyer',what_slow_cps = 40,show_two_window = True)
 define i = Character('Chinese Immigrant',what_slow_cps = 40,show_two_window = True)
 # Watt's Rebellion
 define a = Character('Protestor',what_slow_cps = 40,show_two_window = True)
+define b = Character('Speaker',what_slow_cps = 40)
 
 # where program starts running
 # scene (name of image) will put that image on the background
@@ -49,13 +53,20 @@ menu:
         jump CI
     "Watt's Rebellion":
         jump WR
+    "Classroom":
+        jump CR
+    "Debugging":
+        jump DB
 
 # begin Native American chapter
 
 label NA:
- pause(.5)
- n "{i}What is going on?{/i}"
- n "{i}Where am I?{/i}"
+ n "Be sure to turn up your volume! Press space to advance."
+ n "If you want to go back a frame, press the 'back' button at the bottom of this screen."
+    
+ pause(.1)
+ y "{i}What is going on?{/i}"
+ y "{i}Where am I?{/i}"
 
  scene bg colonialbackground
  with fade
@@ -136,16 +147,11 @@ stop music
 
 n "But before you can dwell on this further, the scene shifts."
 
-scene bg black
-with Dissolve(.5)
-scene bg white
-with Dissolve(.5)
-scene bg black
-with Dissolve(.5)
-scene bg white
-with Dissolve(.5)
-scene bg black
-with Dissolve(.5)
+scene bg black with Dissolve(.5)
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
 
 jump CI
 
@@ -193,80 +199,57 @@ with dissolve
 l "Hello, my name is William Hill and I am your attorney."
 l "I was hired for you by the Chinese Six Companies. I will do my best to help you."
 l "Let’s begin with you telling me your story."
-show lawyer normal at right
-with dissolve
-show chinese talk at left
-with dissolve
+show lawyer normal at right with dissolve
+show chinese talk at left with dissolve
 i "I have been here for 10 years now working on the railroads."
 i "I tried to obtain a certificate of residency as conditioned in the Geary Act of 1892, but there was no white witness that could testify of my status."
 i "An officer, I don’t remember his name, arrested me because I did not have the certificate."
 i "When I tried to explain to him and the judge about my situation, they did not listen."
-show chinese dejected at left
-with dissolve
+show chinese dejected at left with dissolve
 i "The judge ordered me to be deported."
-show chinese normal at left
-with dissolve
-show lawyer talk at right
-with dissolve
+show chinese normal at left with dissolve
+show lawyer talk at right with dissolve
 l "So you have been in America for two years without a certificate?"
 l "But you have been in America for a total of 10 years, so since 1884?"
-show lawyer normal at right
-with dissolve
+show lawyer normal at right with dissolve
 n "The Chinese immigrant nods his head."
-show chinese talk at left
-with dissolve
+show chinese talk at left with dissolve
 i "Yes."
-show chinese normal at left
-with dissolve
-show lawyer look at right
-with dissolve
+show chinese normal at left with dissolve
+show lawyer look at right with dissolve
 l "What is the name of the railroad company you worked for?"
-show lawyer normal at right
-with dissolve   
-show chinese talk at left
-with dissolve
+show lawyer normal at right with dissolve   
+show chinese talk at left with dissolve
 i "I worked for the California and Nevada Railroad."
-show chinese normal at left
-with dissolve
-show lawyer look at right
-with dissolve
+show chinese normal at left with dissolve
+show lawyer look at right with dissolve
 l "Why were you unable to obtain a certificate?"
-show lawyer normal at right
-with dissolve
-show chinese talk at left
-with dissolve
+show lawyer normal at right with dissolve
+show chinese talk at left with dissolve
 i "There were hundreds of Chinese people like me working on the tracks."
 i "We did as we were told and never saw or talked to our employer unless one of us had made a mistake or if we needed to work faster."
 i "If I never interacted with my employer, then how could he be my witness?"
-show chinese normal at left
-with dissolve    
+show chinese normal at left with dissolve    
 n "The lawyer scribbles some notes down on his paper. He sighs."
-show lawyer talk at right
-with dissolve
+show lawyer talk at right with dissolve
 l "I am sorry, but I can do nothing for you at this moment."
 l "As established by the case of Fong Yue Ting v. U.S., deportation is not a punishment for a crime."
 l "You are not unlawfully residing in America, but your inability to obtain a certificate is merely an administrative mistake."
 l "They are fixing that mistake by sending you home. This is what the Supreme Court has said and this is the precedent."
-show lawyer normal at right
-with dissolve
+show lawyer normal at right with dissolve
 n "Angered, you try to interject."
 y "{i}That's not fair! He should not be deported! It's not even his fault!{/i}"
 n "The Chinese immigrant begins to lose his composure."
-show chinese talk at left
-with dissolve
+show chinese talk at left with dissolve
 i "Is there really nothing you can do?"
-show chinese normal at left
-with dissolve
-show lawyer look at right
-with dissolve
+show chinese normal at left with dissolve
+show lawyer look at right with dissolve
 l "Yes, I'm afraid so."
-show lawyer normal at right
-with dissolve
-show chinese talk at left
-with dissolve
+show lawyer normal at right with dissolve
+show chinese talk at left with dissolve
 i "Then I am sorry to waste your time. Thank you for trying to help."
-show chinese normal at left
-with dissolve
+show chinese normal at left with dissolve
+
 play sound "chair.mp3"
 n "The lawyer leaves with his head bowed low."
 play sound "footsteps.mp3"
@@ -275,35 +258,29 @@ n "You wish you could go stop the lawyer from leaving. But before you could move
 stop sound
 stop music
 
-scene bg black
-with fade
-scene bg white
-with Dissolve(.5)
-scene bg black
-with Dissolve(.5)
-scene bg white
-with Dissolve(.5)
-scene bg black
-with Dissolve(.5)
-
+scene bg black with fade
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
 
 jump WR
 
 # third chapter Watt's Rebellion
 label WR:
 
-scene bg buildings
-with fade
+scene bg buildings with fade
+play music "ch3sounds/Rebellion.mp3" fadein 1.0
 
 n "The surroundings suddenly changed again."
 y "{i}It seems like I’m in early 20th century Los Angeles.{/i}"
 n "You see buildings burning. There are fire fighters putting out the flames and trash is all over the street."
 y "Hearing a lot of shouts from down the street, you decide to approach where the sounds are coming from."
 
-scene bg black
-with fade
-scene bg crowd
-with fade
+scene bg blac with fade
+scene bg crowd with dissolve
+stop music fadeout 1.0
+play music "ch3sounds/Crowd_Talking.mp3"
 
 y "{i}Oh my gosh, what’s going on? This is complete chaos!{/i}"
 n "You end up joining a crowd of people on the side. Someone is speaking amongst the chaos."
@@ -330,20 +307,15 @@ menu:
 
 label explain:
     a "We're finally protesting against our unfair treatment! Are you gonna join us?"
-    # jump progress
     jump decide        
 label introduce:
-    a "That's not important. Who are you?"
-    jump progress
-    # jump loop
+    a "That's not important. Are you going to join our cause?"
+    jump decide
 label angry:
-    a "Obviously you! Do you wanna get arrested with the rest of us that badly?"
-    # jump progress
+    a "Obviously you! Do you wanna get arrested with all of us that badly?"
     # $ count = 0
     jump apologize
-# else:
-#    jump progress
-
+    
 label decide:
     menu:
         "Definitely!":
@@ -358,8 +330,8 @@ a "Well then what are you doing here??"
 jump progress
     
 label react:
-a "Great! As soon as the leader finishes her speech, we will finally begin the real event!"
-jump respond
+a "Great! As soon as the speaker finishes, we will finally begin the real event!"
+jump progress
 
 label apologize:
 n "You quickly apologize before you make him more angry."
@@ -368,10 +340,109 @@ a "Well if you don't understand, you should probably shouldn't be here anyway...
 jump progress
 
 label progress:
-# y "{i}Wait he can hear me now???{/i}" 
-n "Before you can respond, the crowd shouts again in unison."
+n "He looks back at the noisy crowd."
+a "Now stop trying to distract me, I want to listen to the speaker!"
+# add in short shout
+n "The crowd shouts again in unison, before the speaker quiets them down."
+# potential loud shout noise
 
-scene bg black
-with fade
-scene bg speaker
-with fade
+scene bg black with fade
+
+scene bg speaker with dissolve
+b "Our black families have come to Los Angeles before, believing that we were not targets of prejudice and oppression."
+b "Soon our communities grew, as we brought back more families to what we thought was safety."
+scene bg speaker_lookright with dissolve
+b "But then White LA got scared of us black folk."
+scene bg speaker_lookarm with dissolve
+b "‘Herds of Blacks were coming!’ they said."
+scene bg speaker_talk with dissolve
+b "‘Draw the color line before it’s too late,’ they said."
+scene bg speaker_lookright with dissolve
+b "They wanted to contain and crowd us in our neighborhood of South Central Ave."
+b "They removed all other white people into cleaner, nicer neighborhoods, while we were forced into poverty."
+b "While our homes became more crowded, we needed ways to get out of our misery"
+scene bg speaker_lookarm with dissolve
+b "Our ‘Harlem of the West’ began here!"
+scene bg speaker_talk with dissolve
+b "Prostitution, gambling and saloons. The white man thought our vices were disgusting."
+scene bg speaker with dissolve
+b "The LAPD patrolled our neighborhood like we were animals in cages."
+scene bg speaker_talk with dissolve
+b "We were not born as animals!"
+scene bg speaker_lookarm with dissolve
+b "We were just contained and controlled like animals as if we can’t reason or love each other."
+b "How can we live our lives if we are given nothing else--not even the basic human right of life?!"
+scene bg speaker with dissolve
+b "I love my brothers and sisters...{p}and yes, even the White folks."
+scene bg speaker_talk with dissolve
+b "What I don’t love--the way police beat and arrest us every day without any sympathy."
+scene bg speaker_lookright with dissolve
+b "They take away our loved ones for years inside prison walls."
+scene bg speaker_talk with dissolve
+b "They built more prisons than schools.{p}It is obvious where our children are destined to be." 
+scene bg speaker_lookarm with dissolve
+b "We need to take back our community for us and for our children."
+b "Let’s continue this rebellion and take back what is ours!"
+# potential loud sound from crowd
+
+label DB:
+
+scene bg black with fade
+scene bg crowd with dissolve
+
+n "You feel just as energized as the other people in the crowd."
+y "{i}Wow, that was such an inspiring speech!{/i}"
+y "{i}Makes me want to help them in any way possible!{/i}"
+y "{i}Except...I still don't know when or where I am...{/i}"
+n "The tall African American man turns back to you with a grin."
+
+show man normal at left with dissolve
+a "Now do you see why we're gathered here?"
+n "He sees your bewildered expression."
+a "Since you seem new to this place...and uh still kind of lost..."
+
+$ count = 1
+jump loop
+
+label loop:
+
+if count > 0:
+    a "Any other questions?"
+    menu:
+        "What day is it again?":
+            a "How could you forget? It's August 12th, 1965."
+            jump loop
+        "Where is this place?":
+            a "This is the Watts of South L.A."
+            jump loop
+        "So who started this riot?":
+            a "First of all, it's a rebellion, not a riot. And it's not just one person."
+            a "We are finally rising against the years of oppression and discrimination of our people."
+            jump loop
+        "Nope, I'm good for now.":
+            $ count = 0
+            jump loop
+else:
+    a "Great! I'll be off then!"
+    jump progress2
+    
+label progress2:    
+hide man with dissolve
+n "He hurries back to join the increasingly loud crowd."
+n "As he turns away, you feel the ground begin to spin again."
+
+scene bg black with fade
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
+
+jump CR
+
+label CR:
+
+scene bg white with fade
+scene bg black with Dissolve(2.0)
+scene bg white with dissolve
+scene bg black with Dissolve(2.0)
+    
