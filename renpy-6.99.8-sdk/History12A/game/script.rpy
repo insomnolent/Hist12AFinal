@@ -1,5 +1,5 @@
 ﻿# declared images - backgrounds
-image bg black = "black.png"
+image bg black = "black.jpg"
 image bg white = "white.png"
 image bg colonialbackground = "NA_landscape.jpg"
 image bg detentioncenter = im.Scale("immigrant.jpg",1000,1200)
@@ -11,6 +11,7 @@ image bg speaker_lookright = im.Scale("Blackspeech_lookright.png",800,600)
 image bg speaker_talk = im.Scale("Blackspeech_talk.png",800,600)
 image bg lecturehall = "ch4/LectureHall.jpg"
 image bg lecturehall blur = "ch4/LectureHallblur.png"
+image bg credits = "ch4/Credits.png"
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -54,36 +55,36 @@ define p = Character('Professor',what_slow_cps = 40)
 # scene (name of image) will put that image on the background
 label start:
  scene bg black
+ $ chapter = 0
  
-# skip to a certain chapter
-# delete later before finalizing
- n "What chapter?"
-menu:
-    "Native Americans":
-        jump NA
-    "Chinese Immigrants":
-        jump CI
-    "Watt's Rebellion":
-        jump WR
-    "Classroom":
-        jump CR
-    "Debugging":
-        jump DB
-
+jump chaptermenu
+label chaptermenu:
+if chapter > 0:
+    n "What chapter? (You can also press 'Control' to skip through dialogue)"
+    menu:
+        "Native Americans":
+            jump NA
+        "Chinese Immigrants":
+            jump CI
+        "Watt's Rebellion":
+            jump WR
+        "Lecture room":
+            jump CR
+else:
+    jump NA
+    
 # begin Native American chapter
-
 label NA:
  n "Be sure to turn up your volume! Press space to advance."
  n "If you want to go back a line, press the 'back' button at the bottom of this screen (It's kind of hard to see)"
-    
- pause(.1)
+ n "Thanks for reading, and enjoy!"
+ 
+ pause(2.0)
  y "{i}What is going on?{/i}"
  y "{i}Where am I?{/i}"
-
- scene bg colonialbackground
- with fade
  
  play music "naturesounds.mp3"
+ scene bg colonialbackground with fade
 
  n "You look around at your surroundings."
  y "{i}Wow, this looks like one of the paintings I saw in my History 12A class. Am I dreaming?{/i}"
@@ -91,8 +92,7 @@ label NA:
  n "You hear some noises near the lake in front of you."
  n "You move forward to investigate."
 
- show chief normal at left
- with dissolve
+ show chief normal at left  with dissolve
 
  show chief talk at left
 
@@ -121,7 +121,6 @@ label ignore:
  s "I am here to make a deal with you!"
  s "I want your land and I promise to give you an area of land for you and your family to live peacefully."
  s "Here is a treaty for you to review. Please look over the terms of this treaty and let me know if you are unsatisfied."
-
  show settler normal at right
 
  n "They begin talking about the terms, but you can’t hear them. You only pick up a few words."
@@ -130,7 +129,10 @@ label ignore:
  show chief talk at left
  c "You write that you will leave my family in peace, but how can I trust you? The 1850 Act for the Protection and Governance of Indians was established to benefit us, but it only benefitted your people."
  c "You have invaded our land, destroyed our people and eliminated all chances of survival. So tell me, how can I believe that this treaty will stand?"
+ show chief normal at left
+ show settler talk at right
  s "You are right. The 1850 Act has failed you. However, you have my word that I will stand by this treaty and leave you and your family in peace. I only want your land and nothing more."
+ show settler normal at right
  
  n "You try to interject:"
 menu: 
@@ -143,11 +145,15 @@ menu:
 
 label ignoreagain:
  n "He still doesn’t seem to hear you."
- c "I'm not sure if this will be the best idea..."
- s "But what other choice do you have? If you don’t sign this treaty, then you risk having your land taken by force!"
- n "The chief is in a dilemma. He has to choose between his land, or the peace of his people."
- c "I still have my doubts, but I will sign this treaty with you." 
- s "You have made a smart decision."
+show chief talk at left
+c "I'm not sure if this will be the best idea..."
+show chief normal at left
+show settler talk at right
+s "But what other choice do you have? If you don’t sign this treaty, then you risk having your land taken by force!"
+n "The chief is in a dilemma. He has to choose between his land, or the peace of his people."
+show settler normal at right
+c "I still have my doubts, but I will sign this treaty with you." 
+s "You have made a smart decision."
 show settler smile at right
 
 n "He smiles again."
@@ -158,6 +164,8 @@ stop music
 
 n "But before you can dwell on this further, the scene shifts."
 
+scene bg black with Dissolve(.5)
+scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
 scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
@@ -272,6 +280,8 @@ scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
 scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
+scene bg white with Dissolve(.5)
+scene bg black with Dissolve(.5)
 
 jump WR
 
@@ -279,7 +289,7 @@ jump WR
 label WR:
 
 scene bg buildings with fade
-play music "ch3sounds/Rebellion.mp3" fadein 1.0
+play music "ch3/Rebellion.mp3" fadein 1.0
 
 n "The surroundings suddenly changed again."
 y "{i}It seems like I’m in early 20th century Los Angeles.{/i}"
@@ -291,7 +301,7 @@ n "Hearing a lot of shouts from down the street, you decide to approach where th
 scene bg black with fade
 scene bg crowd with dissolve
 stop music fadeout 1.0
-play music "ch3sounds/Crowd_Talking.mp3"
+play music "ch3/Crowd_Talking.mp3"
 
 y "{i}Oh my gosh, what’s going on? This is complete havoc!{/i}"
 n "People are milling around everywhere, pushing and talking and gesturing at the same time."
@@ -350,7 +360,7 @@ n "You quickly apologize before you make him more angry."
 show man normal at left with dissolve
 n "He seems satisfied for now."
 show man talk at left with dissolve
-a "Well if you don't understand, you should probably shouldn't be here anyway..."
+a "Well if you don't understand, you probably shouldn't be here anyway..."
 jump progress
 
 label progress:
@@ -358,13 +368,15 @@ show man right at left with dissolve
 n "He looks back at the noisy crowd."
 show man talk at left with dissolve
 a "Now stop trying to distract me, I want to listen to the speaker!"
-# add in short shout
+play sound "ch3/Crowd_shout.mp3"
 n "The crowd shouts again in unison, before the speaker quiets them down."
-# potential loud shout noise
+stop music
 
 scene bg black with fade
 
 scene bg speaker with dissolve
+play sound "ch3/Microphone_Feedback.wav"
+play music "ch3/inspiring.mp3"
 b "Our black families have come to Los Angeles before, believing that we were not targets of prejudice and oppression."
 b "Soon our communities grew, as we brought back more families to what we thought was safety."
 scene bg speaker_lookright with dissolve
@@ -398,14 +410,16 @@ scene bg speaker_talk with dissolve
 b "They built more prisons than schools.{p}It is obvious where our children are destined to be." 
 scene bg speaker_lookarm with dissolve
 b "We need to take back our community for us and for our children."
+play sound "ch3/Crowd_shout.mp3"
 b "Let’s continue this rebellion and take back what is ours!"
-# potential loud sound from crowd
-
-label DB:
+stop music
+stop sound
+# label DB:
 
 scene bg black with fade
 scene bg crowd with dissolve
 
+play music "ch3/Speech_murmur.mp3"
 n "You feel just as energized as the other people in the crowd."
 y "{i}Wow, that was such an inspiring speech!{/i}"
 y "{i}Makes me want to help them in any way possible!{/i}"
@@ -446,30 +460,35 @@ else:
     
 label progress2:    
 hide man with dissolve
+play sound "ch3/Crowd_shout.mp3" fadein 1.0
 n "He hurries back to join the increasingly loud crowd."
 n "As he turns away, you feel the ground begin to spin again."
+stop sound
+stop music
 
 scene bg black with fade
 scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
 scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
-y "{i}...{p}......{p}.........{/i}"
 
 jump CR
 label CR:
 
 scene bg white with Dissolve(0.5)
-scene bg black with dissolve
+show bg black with dissolve
+y "..........."
 scene bg white with Dissolve(0.5)
-scene bg black with Dissolve(2.0)
-
-scene bg lecturehall with Dissolve(0.5)
+show bg black with dissolve
+y "....................."
+scene bg white with Dissolve(0.5)
+show bg black with dissolve
+y "..............................."
+scene bg lecturehall blur with Dissolve(0.5)
 scene bg black with dissolve
+play music "ch4/Studentmurmur.mp3" fadein 1.0
 y "{i}Huh?...wait a second...{/i}"
-
 scene bg lecturehall with Dissolve(3.0)
-
 n "You wake inside a familiar lecture room."
 y "!!!"
 y "{i}This looks like Franz Hall!{/i}"
@@ -489,7 +508,7 @@ p "These are just a few important times in our history that have led to what we 
 show prof normal with dissolve
 n "The professor looks around the room."
 p "So what do we hope for the future?"
-n "{i}Hmmm should I raise my hand?{/i}"
+y "{i}Hmmm should I raise my hand?{/i}"
 
 menu:
     "Yes, raise hand.":
@@ -504,13 +523,19 @@ menu:
         jump chosen
 
 label chosen:
+stop music
+play sound "ch4/chairsqueak.mp3"
+
 n "You stand up."
+play music "ch4/Classroom.mp3" fadein 2.0
+
 n "Remembering the dream flashbacks and the lessons you learned in History 12A, you start speaking."
 y "I hope for a future where we spend more money on schools than on prisons."
 y "I hope that there will be more educational programs to help released inmates reenter society more easily." 
 y "I hope that criminalization will not be written on to the color of your skin or your economic status."
 y "And I hope that we will always be aware of what we learned in this class and not take our privilege for granted."
 n "You sit down, oddly satisfied."
+
 show prof tilt with dissolve
 n "The professor smiled."
 show prof tiltopen with dissolve
@@ -524,7 +549,24 @@ show prof normal with dissolve
 p "There is no one cause or one solution to this problem, so it is important to analyze it from all perspectives."
 show prof normalopen with dissolve
 p "Take this knowledge and engage in discussions of the future because the future is in your hands."
+show prof tiltopen with dissolve
+play sound "ch4/applause.wav" fadein 1.0
 
-scene bg black with Dissolve(2.0)
+scene bg black with Dissolve(3.0)
+stop sound
+stop music
+$ renpy.pause(2.0)
+play music "ch4/Ending.mp3"
+show bg credits with fade
+$ renpy.pause(45.0)
 
-    
+stop music
+
+show bg black with dissolve
+$ chapter = 1
+n "Do you want to read the story again?"
+menu:
+    "Yes please!":
+        jump chaptermenu
+    "No thanks!":
+        n "Thanks for reading! Press space to exit."
