@@ -1,4 +1,4 @@
-﻿# declared images
+﻿# declared images - backgrounds
 image bg black = "black.png"
 image bg white = "white.png"
 image bg colonialbackground = "NA_landscape.jpg"
@@ -10,6 +10,7 @@ image bg speaker_lookarm = im.Scale("Blackspeech_lookarm.png",800,600)
 image bg speaker_lookright = im.Scale("Blackspeech_lookright.png",800,600)
 image bg speaker_talk = im.Scale("Blackspeech_talk.png",800,600)
 image bg lecturehall = "ch4/LectureHall.jpg"
+image bg lecturehall blur = "ch4/LectureHallblur.png"
 
 # Native American chapter
 image chief normal = "NA_chief.png"
@@ -25,7 +26,10 @@ image lawyer normal = "Lawyer.png"
 image lawyer talk = "Lawyer_talk.png"
 image lawyer look = "Lawyer_lookdown.png"
 # Watt's Rebellion
-image man normal = "Blackman.png"
+image man normal = "BlackMan.png"
+image man angry = "BlackMan_angry.png"
+image man right = "BlackMan_lookright.png"
+image man talk = "BlackMan_talk.png"
 # Classroom
 image prof normal = "ch4/Professor.png"
 image prof tilt = "ch4/Professor_happy.png"
@@ -70,7 +74,7 @@ menu:
 
 label NA:
  n "Be sure to turn up your volume! Press space to advance."
- n "If you want to go back a frame, press the 'back' button at the bottom of this screen."
+ n "If you want to go back a line, press the 'back' button at the bottom of this screen (It's kind of hard to see)"
     
  pause(.1)
  y "{i}What is going on?{/i}"
@@ -108,8 +112,7 @@ label ignore:
  n "He's speaking to someone else."
  n "You look to your right."
 
- show settler normal at right
- with dissolve
+ show settler normal at right with dissolve
 
  n "The settler smiles."
 
@@ -168,16 +171,14 @@ label CI:
 y "{i}Now what's going on...?{/i}"
 play music "apollo_justice.mp3" fadein 2.0
 
-scene bg detentioncenter 
-with fade
+scene bg detentioncenter with fade
 
 n "It looks like you are now in a detention facility."
 n "A sign on the door says that it is an Immigration Detention center."
 n "You look around and see someone sitting on a chair in the corner."
 y "{i}This has to be a dream...but it seems so realistic!{/i}"
 
-show chinese dejected at left
-with dissolve
+show chinese dejected at left with dissolve
 n "He looks anxious..."
 show chinese normal at left
 with dissolve
@@ -282,15 +283,18 @@ play music "ch3sounds/Rebellion.mp3" fadein 1.0
 
 n "The surroundings suddenly changed again."
 y "{i}It seems like I’m in early 20th century Los Angeles.{/i}"
+y "{i}What's with all this chaos??{/i}"
 n "You see buildings burning. There are fire fighters putting out the flames and trash is all over the street."
-y "Hearing a lot of shouts from down the street, you decide to approach where the sounds are coming from."
+y "{i}I hope no one gets hurt...{/i}"
+n "Hearing a lot of shouts from down the street, you decide to approach where the sounds are coming from."
 
-scene bg blac with fade
+scene bg black with fade
 scene bg crowd with dissolve
 stop music fadeout 1.0
 play music "ch3sounds/Crowd_Talking.mp3"
 
-y "{i}Oh my gosh, what’s going on? This is complete chaos!{/i}"
+y "{i}Oh my gosh, what’s going on? This is complete havoc!{/i}"
+n "People are milling around everywhere, pushing and talking and gesturing at the same time."
 n "You end up joining a crowd of people on the side. Someone is speaking amongst the chaos."
 n "You are so preoccupied that you accidentally bump into a tall African American."
 
@@ -298,13 +302,9 @@ show man normal at left
 
 n "He seems startled to see you there."
 
-# $ count = 1
-# jump loop
-
+show man talk at left with dissolve
 a "What are you doing here? This is no place for a kid like you!"
-
-# label loop:
-# if count > 0:
+ 
 menu:
     "What's going on?":
         jump explain
@@ -314,14 +314,16 @@ menu:
         jump angry
 
 label explain:
+    show man right at left with dissolve
     a "We're finally protesting against our unfair treatment! Are you gonna join us?"
     jump decide        
 label introduce:
+    show man normal at left with dissolve
     a "That's not important. Are you going to join our cause?"
     jump decide
 label angry:
+    show man angry at left with dissolve
     a "Obviously you! Do you wanna get arrested with all of us that badly?"
-    # $ count = 0
     jump apologize
     
 label decide:
@@ -334,21 +336,27 @@ label decide:
             jump advice
 
 label advice:
+show man angry at left with dissolve
 a "Well then what are you doing here??"
 jump progress
     
 label react:
+show man talk at left with dissolve
 a "Great! As soon as the speaker finishes, we will finally begin the real event!"
 jump progress
 
 label apologize:
 n "You quickly apologize before you make him more angry."
+show man normal at left with dissolve
 n "He seems satisfied for now."
+show man talk at left with dissolve
 a "Well if you don't understand, you should probably shouldn't be here anyway..."
 jump progress
 
 label progress:
+show man right at left with dissolve
 n "He looks back at the noisy crowd."
+show man talk at left with dissolve
 a "Now stop trying to distract me, I want to listen to the speaker!"
 # add in short shout
 n "The crowd shouts again in unison, before the speaker quiets them down."
@@ -361,7 +369,7 @@ b "Our black families have come to Los Angeles before, believing that we were no
 b "Soon our communities grew, as we brought back more families to what we thought was safety."
 scene bg speaker_lookright with dissolve
 b "But then White LA got scared of us black folk."
-scene bg speaker_lookarm with dissolve
+scene bg speaker with dissolve
 b "‘Herds of Blacks were coming!’ they said."
 scene bg speaker_talk with dissolve
 b "‘Draw the color line before it’s too late,’ they said."
@@ -371,7 +379,7 @@ b "They removed all other white people into cleaner, nicer neighborhoods, while 
 b "While our homes became more crowded, we needed ways to get out of our misery"
 scene bg speaker_lookarm with dissolve
 b "Our ‘Harlem of the West’ began here!"
-scene bg speaker_talk with dissolve
+scene bg speaker_lookright with dissolve
 b "Prostitution, gambling and saloons. The white man thought our vices were disgusting."
 scene bg speaker with dissolve
 b "The LAPD patrolled our neighborhood like we were animals in cages."
@@ -403,10 +411,10 @@ y "{i}Wow, that was such an inspiring speech!{/i}"
 y "{i}Makes me want to help them in any way possible!{/i}"
 y "{i}Except...I still don't know when or where I am...{/i}"
 n "The tall African American man turns back to you with a grin."
-
 show man normal at left with dissolve
 a "Now do you see why we're gathered here?"
 n "He sees your bewildered expression."
+show man right at left with dissolve
 a "Since you seem new to this place...and uh still kind of lost..."
 
 $ count = 1
@@ -415,6 +423,7 @@ jump loop
 label loop:
 
 if count > 0:
+    show man normal at left with dissolve
     a "Any other questions?"
     menu:
         "What day is it again?":
@@ -425,12 +434,13 @@ if count > 0:
             jump loop
         "So who started this riot?":
             a "First of all, it's a rebellion, not a riot. And it's not just one person."
-            a "We are finally rising against the years of oppression and discrimination of our people."
+            a "We are all finally rising against the years of oppression and discrimination of our people."
             jump loop
         "Nope, I'm good for now.":
             $ count = 0
             jump loop
 else:
+    show man right at left with dissolve
     a "Great! I'll be off then!"
     jump progress2
     
@@ -444,15 +454,14 @@ scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
 scene bg white with Dissolve(.5)
 scene bg black with Dissolve(.5)
+y "{i}...{p}......{p}.........{/i}"
 
 jump CR
-
 label CR:
 
-scene bg white with fade
+scene bg white with Dissolve(0.5)
 scene bg black with dissolve
-
-scene bg white with dissolve
+scene bg white with Dissolve(0.5)
 scene bg black with Dissolve(2.0)
 
 scene bg lecturehall with Dissolve(0.5)
@@ -461,16 +470,24 @@ y "{i}Huh?...wait a second...{/i}"
 
 scene bg lecturehall with Dissolve(3.0)
 
-n "You arrive inside a familiar lecture room. It looks like Franz Hall at UCLA."
+n "You wake inside a familiar lecture room."
+y "!!!"
+y "{i}This looks like Franz Hall!{/i}"
 n "You realize you were dreaming during lecture!"
-n "Professor Hernandez is in the middle of teaching class."
+n "Luckily, no one noticed you sleeping."
+n "Professor Lytle-Hernandez is still in the middle of teaching class."
 
 show prof normal with dissolve
-p "Now, we saw the Native Americans, the Chinese Immigrants, and the Watts Rebellion and how all these moments have led to the current situation of mass incarceration in LA."
+p "...saw the Native Americans, the Chinese Immigrants, and the Watts Rebellion and how all these moments have led to the current situation of mass incarceration in LA."
+show prof normalopen with dissolve
 p "The Native American narrative showed us the elimination and disappearance of natives."
+show prof normal with dissolve
 p "The Chinese Immigrants story made it legal to find people within our borders who came to America without proper documentation to deport and detain."
+show prof normalopen with dissolve
 p "Finally, the police violence that occurred during the Watts Rebellion and now in our time the attack on black livelihood."
-p "It is these three important times in our history that have led to what we know as mass incarceration in LA."
+p "These are just a few important times in our history that have led to what we now know as mass incarceration in LA."
+show prof normal with dissolve
+n "The professor looks around the room."
 p "So what do we hope for the future?"
 n "{i}Hmmm should I raise my hand?{/i}"
 
@@ -488,16 +505,26 @@ menu:
 
 label chosen:
 n "You stand up."
-n "Remembering the flashbacks and the lessons you learned in History 12A, you start speaking."
+n "Remembering the dream flashbacks and the lessons you learned in History 12A, you start speaking."
 y "I hope for a future where we spend more money on schools than on prisons."
 y "I hope that there will be more educational programs to help released inmates reenter society more easily." 
 y "I hope that criminalization will not be written on to the color of your skin or your economic status."
 y "And I hope that we will always be aware of what we learned in this class and not take our privilege for granted."
 n "You sit down, oddly satisfied."
+show prof tilt with dissolve
 n "The professor smiled."
+show prof tiltopen with dissolve
 p "Those are great hopes for the future. I wish for all of you, after taking this class, that you remember this knowledge and share it with your friends and family."
+show prof tilt with dissolve
+show prof normal with dissolve
 p "The wrongs that exist in our history can and need to be corrected."
+show prof normalopen with dissolve
 p "It is unfair for large numbers of poor whites, people of color, and others to be incarcerated because they don't fit into societal norms."
+show prof normal with dissolve
 p "There is no one cause or one solution to this problem, so it is important to analyze it from all perspectives."
+show prof normalopen with dissolve
 p "Take this knowledge and engage in discussions of the future because the future is in your hands."
+
+scene bg black with Dissolve(2.0)
+
     
