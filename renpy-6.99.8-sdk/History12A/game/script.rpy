@@ -501,9 +501,9 @@ p "...saw the Native Americans, the Chinese Immigrants, and the Watts Rebellion 
 show prof normalopen with dissolve
 p "The Native American narrative showed us the elimination and disappearance of natives."
 show prof normal with dissolve
-p "The Chinese Immigrants story made it legal to find people within our borders who came to America without proper documentation to deport and detain."
+p "The Chinese Immigrants story made it legal to find people within our borders who came to America without proper documentation to be deported and detained."
 show prof normalopen with dissolve
-p "Finally, the police violence that occurred during the Watts Rebellion and now in our time the attack on black livelihood."
+p "Finally, the police violence that occurred during the Watts Rebellion and now in our time shows the attack on black livelihood."
 p "These are just a few important times in our history that have led to what we now know as mass incarceration in LA."
 show prof normal with dissolve
 n "The professor looks around the room."
